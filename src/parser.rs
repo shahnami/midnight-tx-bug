@@ -61,6 +61,7 @@ pub async fn parse_tx_index_item<P: Proofish<DefaultDB>>(
 	let body = hex::decode(raw_tx_data_without_prefix)
 		.map_err(|e| anyhow::anyhow!("TransactionBodyDecodeError: {}", e))?;
 
+	// Fails here
 	let tx = deserialize(body.as_slice(), network_id)
 		.map_err(|e| anyhow::anyhow!("TransactionDeserializeError: {}", e))?;
 
