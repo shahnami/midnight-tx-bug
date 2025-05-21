@@ -47,17 +47,6 @@ pub async fn parse_tx_index_item<P: Proofish<DefaultDB>>(
 	let hash = hex::decode(hash_without_prefix)
 		.map_err(|e| anyhow::anyhow!("TransactionHashDecodeError: {}", e))?;
 
-	// When testing, we don't have the raw tx data, so we just return the hash
-	if raw_tx_data_without_prefix.is_empty() {
-		return Ok((
-			TransactionHash(HashOutput(
-				hash.try_into()
-					.map_err(|_| anyhow::anyhow!("Invalid hash length"))?,
-			)),
-			None,
-		));
-	}
-
 	if hash.len() != PERSISTENT_HASH_BYTES {
 		return Err(anyhow::anyhow!(
 			"hash length ({}) != {PERSISTENT_HASH_BYTES}",
