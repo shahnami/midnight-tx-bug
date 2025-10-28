@@ -7,10 +7,10 @@ This project is a **minimal reproducible example** demonstrating a bug in the tr
 You may encounter the following error during transaction deserialization:
 
 ```
-TransactionDeserializeError: Invalid input data for core::option::Option<midnight_ledger::structure::Transaction<midnight_ledger::structure::Proof, midnight_storage::db::InMemoryDB>>, received version: None, maximum supported version is None. Invalid discriminant: 4.
+TransactionDeserializeError: expected header tag 'midnight:option(transaction[v6](signature[v1],(),pedersen-schnorr[v1])):', got '������������������o������Ni�S���u�,��)�s�(Y������]�����X��������tP���'
 ```
 
-This error occurs when attempting to decode certain transaction data from the Midnight node.
+This error occurs when attempting to deserialize transaction data from the Midnight node's `transactions_index` field. The issue is that the data from the RPC is hex-encoded binary data without the `midnight:` tag prefix, but the `deserialize` function expects tagged data.
 
 ## Prerequisites
 
