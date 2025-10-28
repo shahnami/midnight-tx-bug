@@ -6,7 +6,14 @@ edition = "2024"
 [dependencies]
 anyhow = "1.0"
 hex = "0.4.3"
-midnight-ledger = { git = "https://github.com/midnightntwrk/midnight-ledger-prototype", package = "midnight-ledger", tag = "ledger-4.0.0" }
-reqwest = { version = "0.11", features = ["json"] }
+midnight-ledger = { git = "https://github.com/midnightntwrk/midnight-ledger", package = "midnight-ledger", tag = "ledger-6.1.0-alpha.3" }
+midnight-base-crypto = { git = "https://github.com/midnightntwrk/midnight-ledger", package = "midnight-base-crypto", tag = "ledger-6.1.0-alpha.3" }
+midnight-transient-crypto = { git = "https://github.com/midnightntwrk/midnight-ledger", package = "midnight-transient-crypto", tag = "ledger-6.1.0-alpha.3" }
+midnight-storage = { git = "https://github.com/midnightntwrk/midnight-ledger", package = "midnight-storage", tag = "ledger-6.1.0-alpha.3" }
+midnight-serialize = { git = "https://github.com/midnightntwrk/midnight-ledger", tag = "ledger-6.1.0-alpha.3" }
+midnight-node-ledger-helpers = { git = "https://github.com/midnightntwrk/midnight-node", package = "midnight-node-ledger-helpers", tag = "node-0.17.0-rc.4", features = [
+    "test-utils",
+] }
+reqwest = { version = "0.12", features = ["json"] }
 serde_json = "1.0"
-tokio = { version = "1.37", features = ["full"] }
+tokio = { version = "1.45", features = ["full"] }
